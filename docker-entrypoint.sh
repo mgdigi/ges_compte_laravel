@@ -10,5 +10,13 @@ done
 echo "Database is up - executing migrations"
 php artisan migrate --force
 
+echo "Generating Swagger documentation..."
+php artisan l5-swagger:generate
+
+echo "Optimizing Laravel..."
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
 echo "Starting Laravel application..."
 exec "$@"
